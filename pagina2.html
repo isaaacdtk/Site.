@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página 2</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 90%;
+        }
+        h1 {
+            color: #007BFF;
+        }
+        #ad-container {
+            margin: 20px 0;
+            padding: 10px;
+            border: 2px dashed #007BFF;
+            border-radius: 10px;
+            background-color: #eaf4ff;
+        }
+        #timer {
+            font-size: 24px;
+            margin: 20px 0;
+        }
+        #next-button {
+            display: none;
+            padding: 12px 24px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 18px;
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+        #next-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Clique no anúncio e depois volte!</h1>
+        <p>Após voltar, aguarde o contador zerar para continuar.</p>
+
+        <div id="ad-container">
+            <!-- COLE SEU CÓDIGO DE ANÚNCIO AQUI -->
+            <p>Seu anúncio aparecerá aqui!</p>
+        </div>
+
+        <div id="timer">Espere 15 segundos...</div>
+
+        <button id="next-button" onclick="location.href='pagina3.html'">Próxima Página</button>
+    </div>
+
+    <script>
+        let seconds = 15;
+        const timerElement = document.getElementById('timer');
+        const nextButton = document.getElementById('next-button');
+        const adContainer = document.getElementById('ad-container');
+
+        function updateTimer() {
+            timerElement.innerText = 'Espere ' + seconds + ' segundos...';
+            seconds--;
+
+            if (seconds < 0) {
+                clearInterval(countdown);
+                timerElement.style.display = 'none';
+                adContainer.style.display = 'none';
+                nextButton.style.display = 'inline-block';
+            }
+        }
+
+        const countdown = setInterval(updateTimer, 1000);
+    </script>
+</body>
+</html>
